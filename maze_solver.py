@@ -1,8 +1,4 @@
 import heapq
-
-# ==========================
-# A* Algorithm
-# ==========================
 def astar(maze, start, goal):
     rows, cols = len(maze), len(maze[0])
 
@@ -15,19 +11,13 @@ def astar(maze, start, goal):
     while open_list:
         _, current = heapq.heappop(open_list)
 
-        # Goal reached
         if current == goal:
             return reconstruct_path(came_from, current)
-
-        # حركة (يمين، يسار، فوق، تحت)
         for move in [(0,1), (1,0), (0,-1), (-1,0)]:
             neighbor = (current[0] + move[0], current[1] + move[1])
 
-            # Check boundaries
             if not (0 <= neighbor[0] < rows and 0 <= neighbor[1] < cols):
                 continue
-
-            # Check wall
             if maze[neighbor[0]][neighbor[1]] == 1:
                 continue
 
@@ -40,19 +30,11 @@ def astar(maze, start, goal):
                 f_score = tentative_g + heuristic(neighbor, goal)
                 heapq.heappush(open_list, (f_score, neighbor))
 
-    return None  # No path
+    return None  
 
-
-# ==========================
-# Heuristic (Manhattan)
-# ==========================
 def heuristic(a, b):
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
-
-# ==========================
-# Reconstruct Path
-# ==========================
 def reconstruct_path(came_from, current):
     path = [current]
     while current in came_from:
@@ -61,9 +43,6 @@ def reconstruct_path(came_from, current):
     return path[::-1]
 
 
-# ==========================
-# Print Maze Clearly
-# ==========================
 def print_maze(maze, path, start, goal):
     path_set = set(path) if path else set()
 
@@ -83,9 +62,6 @@ def print_maze(maze, path, start, goal):
         print()
 
 
-# ==========================
-# Example Maze
-# ==========================
 maze = [
     [0,0,0,0,1],
     [1,1,0,1,0],
@@ -97,10 +73,10 @@ maze = [
 start = (0, 0)
 goal = (4, 4)
 
-# Run A*
+
 path = astar(maze, start, goal)
 
-# Output
+
 if path:
     print("Shortest Path:", path)
     print_maze(maze, path, start, goal)
