@@ -1,0 +1,23 @@
+text,label
+I love this product,positive
+This is amazing,positive
+I am very happy,positive
+Best experience ever,positive
+I really like this,positive
+Fantastic quality,positive
+I love you,positive
+
+This is terrible,negative
+I hate this,negative
+Worst product ever,negative
+Very bad experience,negative
+I am not happy,negative
+This is so bad,negative
+Horrible quality,negative
+
+It is okay,neutral
+Not bad,neutral
+Nothing special,neutral
+Average product,neutral
+I feel neutral,neutral
+It is fine,neutral
